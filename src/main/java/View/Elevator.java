@@ -33,6 +33,10 @@ public class Elevator extends JFrame {
     private JLabel vazio8;
     private JLabel vazio9;
 
+    private JLabel vazio10;
+    private JLabel vazio11;
+    private JLabel vazio12;
+
 
     // JButton - floors
     private JButton floor6Btn;
@@ -92,11 +96,17 @@ public class Elevator extends JFrame {
     vazio8 = new JLabel(" ");
     vazio9 = new JLabel(" ");
 
+    vazio10 = new JLabel(" ");
+    vazio11 = new JLabel(" ");
+    vazio12 = new JLabel(" ");
+
+
 
     // Add
     mainPanel.add(vazio);
     mainPanel.add(el1);
     mainPanel.add(el2);
+    mainPanel.add(vazio10);
 
     mainPanel.add(floor6Lab);
     mainPanel.add(vazio1);
