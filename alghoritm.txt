@@ -1,0 +1,4 @@
+* ao apertar o botão chamar o elevador e dar um aviso que o elevador
+está a caminho;
+* quando o elevador chegar, perguntar para qual andar quer ir;
+* sempre o elevador mais próximo do andar;
