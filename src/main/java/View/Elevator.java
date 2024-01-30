@@ -193,11 +193,10 @@ public class Elevator extends JFrame {
     mainPanel.add(floorSub2Btn);
 
 
-
     //setFrame
     //this.pack();
     this.setDefaultCloseOperation(2);
     this.setVisible(true);
-    this.setBounds(300, 300, 300, 300);
+    this.setBounds(400,100, 500, 500);
     }
 }
