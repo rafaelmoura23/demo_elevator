@@ -3,7 +3,10 @@ package View;
 // Imports
 import javax.swing.*;
 
-import java.awt.GridLayout;
+import javax.swing.border.Border;
+
+import java.awt.*;
+
 
 public class Elevator extends JFrame {
     // Atributos
@@ -65,7 +68,7 @@ public class Elevator extends JFrame {
     mainPanel.setLayout(grid);
 
     // Definindo os botões
-    floor6Btn = new JButton("C");
+    floor6Btn = new JButton("🔥");
     floor5Btn = new JButton("C");
     floor4Btn = new JButton("C");
     floor3Btn = new JButton("C");
@@ -107,6 +110,40 @@ public class Elevator extends JFrame {
     vazio18 = new JLabel(" ");
     vazio19 = new JLabel(" ");
 
+
+    Border borda = BorderFactory.createLineBorder(Color.BLACK);
+
+    floor6Lab.setBorder(borda);
+    floor5Lab.setBorder(borda);
+    floor4Lab.setBorder(borda);
+    floor3Lab.setBorder(borda);
+    floor2Lab.setBorder(borda);
+    floor1Lab.setBorder(borda);
+    floorTLab.setBorder(borda);
+    floorSub1Lab.setBorder(borda);
+    floorSub2Lab.setBorder(borda);
+
+    vazio.setBorder(borda);
+    vazio1.setBorder(borda);
+    vazio2.setBorder(borda);
+    vazio3.setBorder(borda);
+    vazio4.setBorder(borda);
+    vazio5.setBorder(borda);
+    vazio6.setBorder(borda);
+    vazio7.setBorder(borda);
+    vazio8.setBorder(borda);
+    vazio9.setBorder(borda);
+
+    vazio10.setBorder(borda);
+    vazio11.setBorder(borda);
+    vazio12.setBorder(borda);
+    vazio13.setBorder(borda);
+    vazio14.setBorder(borda);
+    vazio15.setBorder(borda);
+    vazio16.setBorder(borda);
+    vazio17.setBorder(borda);
+    vazio18.setBorder(borda);
+    vazio19.setBorder(borda);
 
 
     // Add
