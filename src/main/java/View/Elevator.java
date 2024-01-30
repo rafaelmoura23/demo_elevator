@@ -19,9 +19,6 @@ public class Elevator extends JFrame {
     private JLabel floorSub1Lab;
     private JLabel floorSub2Lab;
 
-    private JLabel el1;
-    private JLabel el2;
-
     private JLabel vazio;
     private JLabel vazio1;
     private JLabel vazio2;
@@ -36,7 +33,13 @@ public class Elevator extends JFrame {
     private JLabel vazio10;
     private JLabel vazio11;
     private JLabel vazio12;
-
+    private JLabel vazio13;
+    private JLabel vazio14;
+    private JLabel vazio15;
+    private JLabel vazio16;
+    private JLabel vazio17;
+    private JLabel vazio18;
+    private JLabel vazio19;
 
     // JButton - floors
     private JButton floor6Btn;
@@ -58,7 +61,7 @@ public class Elevator extends JFrame {
     this.add(mainPanel);
 
     // Layout
-    GridLayout grid = new GridLayout(10,4); // 9 linhas x 2 colunas
+    GridLayout grid = new GridLayout(9, 4); // 9 linhas x 2 colunas
     mainPanel.setLayout(grid);
 
     // Definindo os botões
@@ -82,9 +85,6 @@ public class Elevator extends JFrame {
     floorSub1Lab = new JLabel("Sub 1");
     floorSub2Lab = new JLabel("Sub 2");
 
-    el1 = new JLabel("Elev 1");
-    el2 = new JLabel("Elev 2");
-
     vazio = new JLabel(" ");
     vazio1 = new JLabel(" ");
     vazio2 = new JLabel(" ");
@@ -99,49 +99,60 @@ public class Elevator extends JFrame {
     vazio10 = new JLabel(" ");
     vazio11 = new JLabel(" ");
     vazio12 = new JLabel(" ");
+    vazio13 = new JLabel(" ");
+    vazio14 = new JLabel(" ");
+    vazio15 = new JLabel(" ");
+    vazio16 = new JLabel(" ");
+    vazio17 = new JLabel(" ");
+    vazio18 = new JLabel(" ");
+    vazio19 = new JLabel(" ");
 
 
 
     // Add
-    mainPanel.add(vazio);
-    mainPanel.add(el1);
-    mainPanel.add(el2);
-    mainPanel.add(vazio10);
-
     mainPanel.add(floor6Lab);
     mainPanel.add(vazio1);
+    mainPanel.add(vazio10);
     mainPanel.add(floor6Btn);
 
     mainPanel.add(floor5Lab);
     mainPanel.add(vazio2);
+    mainPanel.add(vazio11);
     mainPanel.add(floor5Btn);
 
     mainPanel.add(floor4Lab);
     mainPanel.add(vazio3);
+    mainPanel.add(vazio12);
     mainPanel.add(floor4Btn);
 
     mainPanel.add(floor3Lab);
     mainPanel.add(vazio4);
+    mainPanel.add(vazio13);
     mainPanel.add(floor3Btn);
 
     mainPanel.add(floor2Lab);
     mainPanel.add(vazio5);
+    mainPanel.add(vazio14);
     mainPanel.add(floor2Btn);
 
     mainPanel.add(floor1Lab);
     mainPanel.add(vazio6);
+    mainPanel.add(vazio15);
     mainPanel.add(floor1Btn);
 
     mainPanel.add(floorTLab);
     mainPanel.add(vazio7);
+    mainPanel.add(vazio16);
     mainPanel.add(floorTBtn);
 
     mainPanel.add(floorSub1Lab);
     mainPanel.add(vazio8);
+    mainPanel.add(vazio17);
     mainPanel.add(floorSub1Btn);
 
     mainPanel.add(floorSub2Lab);
     mainPanel.add(vazio9);
+    mainPanel.add(vazio18);
     mainPanel.add(floorSub2Btn);
 
 
