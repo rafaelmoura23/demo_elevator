@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+
 import Model.*;
 
 public class ElevatorGrid extends JFrame {
@@ -16,6 +18,11 @@ public class ElevatorGrid extends JFrame {
     private JLabel labelElevator2;
 
     public ElevatorGrid() {
+        try {
+            UIManager.setLookAndFeel(new NimbusLookAndFeel());
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
         elevator1 = new Elevador();
         elevator2 = new Elevador();
 
@@ -29,8 +36,11 @@ public class ElevatorGrid extends JFrame {
 
         // Defining the labels
         labelFloor = new JLabel("Andar Atual:");
+        labelFloor.setFont(new Font("Calibri", Font.BOLD, 16));
         labelElevator1 = new JLabel("Elevador 1:");
+        labelElevator1.setFont(new Font("Calibri", Font.BOLD, 16));
         labelElevator2 = new JLabel("Elevador 2:");
+        labelElevator2.setFont(new Font("Calibri", Font.BOLD, 16));
 
         // Adding 'elevator 1 and 2' to the 'elevatorsPanel'
         elevatorsPanel.add(labelElevator1);
@@ -41,6 +51,12 @@ public class ElevatorGrid extends JFrame {
             JButton btnAndar = new JButton(Integer.toString(i)); // Creating the buttons
             btnAndar.addActionListener(new BotaoAndarListener(i)); // Adding Action to buttons
             buttonsPanel.add(btnAndar); // Adding the buttons on the 'buttonsPanel'
+        // Set button properties for a better appearance
+  
+        btnAndar.setFocusPainted(false);
+        btnAndar.setFont(new Font("Calibri", Font.BOLD, 16));
+        btnAndar.setBackground(new Color(70, 130, 180));
+        btnAndar.setForeground(Color.WHITE);
         }
 
         // Adding and defining the main panel using 'BorderLayout'
