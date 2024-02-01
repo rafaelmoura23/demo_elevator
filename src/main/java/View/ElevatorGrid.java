@@ -23,6 +23,7 @@ public class ElevatorGrid extends JFrame {
         } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
+        // Instanciando, criando um objeto elevator
         elevator1 = new Elevador();
         elevator2 = new Elevador();
 
@@ -75,6 +76,7 @@ public class ElevatorGrid extends JFrame {
         setBounds(500, 180, 500, 350);
     }
  
+    // Classe para lidar com os eventos dos buttons
     private class BotaoAndarListener implements ActionListener {
         private int andarDestino;
     
@@ -96,9 +98,9 @@ public class ElevatorGrid extends JFrame {
                 labelElevator2.setText("Elevator 2: Floor " + andarDestino);
             }
     
-            // Perguntar para qual andar o usuário deseja ir
+            // JOptionPane to ask the user the floor
             String[] opcoesAndares = new String[]{"Subsoil 1", "Subsoil 2", "Ground floor", "Floor 1", "Floor 2", "Floor 3",
-                    "Floor 4", "Floor 5", "Floor 6"};
+                    "Floor 4", "Floor 5", "Floor 6"}; // Options 
             String andarEscolhido = (String) JOptionPane.showInputDialog(null,
                     "Choose which floor you want to go to:",
                     "Floors",
@@ -109,7 +111,7 @@ public class ElevatorGrid extends JFrame {
     
             // Moving the elevator to the floor chosen
             if (andarEscolhido != null) {
-                int novoAndar = getIndexFromFloor(andarEscolhido);
+                int novoAndar = getIndex(andarEscolhido);
                 if (elevadorMaisProximo == 1) {
                     elevator1.irParaAndar(novoAndar);
                     labelFloor.setText("Current Floor: " + novoAndar);
@@ -122,8 +124,8 @@ public class ElevatorGrid extends JFrame {
             }
         }
     
-        // Método auxiliar para obter o índice do andar a partir do nome
-        private int getIndexFromFloor(String floorName) {
+        // Obtaining the correct index
+        private int getIndex(String floorName) {
             String[] opcoesAndares = new String[]{"Subsoil 1", "Subsoil 2", "Ground floor", "Floor 1", "Floor 2", "Floor 3",
                     "Floor 4", "Floor 5", "Floor 6"};
             for (int i = 0; i < opcoesAndares.length; i++) {
