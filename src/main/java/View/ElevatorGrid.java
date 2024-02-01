@@ -46,9 +46,9 @@ public class ElevatorGrid extends JFrame {
         labelFloor.setFont(new Font("Monospaced", Font.BOLD, 16));
 
         labelFloor.setBackground(Color.GRAY);
-        labelElevator1 = new JLabel("Elevator 1:");
+        labelElevator1 = new JLabel("Elevator 1: Térreo");
         labelElevator1.setFont(new Font("Monospaced", Font.BOLD, 16));
-        labelElevator2 = new JLabel("Elevator 2:");
+        labelElevator2 = new JLabel("Elevator 2: Térreo");
         labelElevator2.setFont(new Font("Monospaced", Font.BOLD, 16));
 
         // Adding 'elevator 1 and 2' to the 'elevatorsPanel'
@@ -58,7 +58,7 @@ public class ElevatorGrid extends JFrame {
 
         // Creating the buttons using forloop
         for (int i = -2; i <= 6; i++) {
-            JButton btnAndar = new JButton(Integer.toString(i)); // Creating the buttons
+            JButton btnAndar = new JButton(Integer.toString(i)); // Creating the buttons, index
             btnAndar.addActionListener(new buttonsListener(i)); // Adding Action to buttons
             buttonsPanel.add(btnAndar); // Adding the buttons on the 'buttonsPanel'
         // Set button properties for a better appearance
