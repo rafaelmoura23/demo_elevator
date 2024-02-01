@@ -24,87 +24,108 @@ public class ElevatorGrid extends JFrame {
         // Creating Panel for status of elevators and using 'GridLayout'
         JPanel elevatorsPanel = new JPanel();
         elevatorsPanel.setLayout(new GridLayout(2, 1));
-
-        // set frame
-        setTitle("Elevator");
-        setSize(400, 200);
-        setDefaultCloseOperation(2);
-        setVisible(true);
+        // Creating Panel for Buttons
+        JPanel buttonsPanel = new JPanel();
 
         // Defining the labels
-        labelFloor = new JLabel("Andar: Térreo");
-        labelElevator1 = new JLabel("Elevador 1: Térreo");
-        labelElevator2 = new JLabel("Elevador 2: Térreo");
+        labelFloor = new JLabel("Andar Atual:");
+        labelElevator1 = new JLabel("Elevador 1:");
+        labelElevator2 = new JLabel("Elevador 2:");
 
         // Adding 'elevator 1 and 2' to the 'elevatorsPanel'
         elevatorsPanel.add(labelElevator1);
         elevatorsPanel.add(labelElevator2);
 
+        // Creating the buttons using forloop
+        for (int i = -2; i <= 6; i++) {
+            JButton btnAndar = new JButton(Integer.toString(i)); // Creating the buttons
+            btnAndar.addActionListener(new BotaoAndarListener(i)); // Adding Action to buttons
+            buttonsPanel.add(btnAndar); // Adding the buttons on the 'buttonsPanel'
+        }
+
         // Adding and defining the main panel using 'BorderLayout'
         add(labelFloor, BorderLayout.CENTER);
         add(elevatorsPanel, BorderLayout.EAST);
-        
+        add(buttonsPanel, BorderLayout.SOUTH);
 
-        JPanel botoesPanel = new JPanel();
-        for (int i = -2; i <= 6; i++) {
-            JButton btnAndar = new JButton(Integer.toString(i));
-            btnAndar.addActionListener(new BotaoAndarListener(i));
-            botoesPanel.add(btnAndar);
-        }
-        add(botoesPanel, BorderLayout.SOUTH);
+        // Set Frame
+        setSize(400, 200);
+        setDefaultCloseOperation(2);
+        setVisible(true);
+        setBounds(500, 180, 500, 350);
     }
 
-
-    // Buttons actions
+    // Defining the floor =  
     private class BotaoAndarListener implements ActionListener {
         private int andarDestino;
-
+    
         public BotaoAndarListener(int andar) {
             this.andarDestino = andar;
         }
-
+    
         @Override
         public void actionPerformed(ActionEvent e) {
-            String[] opcoesAndares = new String[]{"Térreo", "Subsolo 1", "Subsolo 2", "Andar 1", "Andar 2", "Andar 3", "Andar 4", "Andar 5", "Andar 6"};
+            // Moving elevator to floor clicked
+            int elevadorMaisProximo = calculateElevator(andarDestino);
+            if (elevadorMaisProximo == 1) {
+                elevator1.irParaAndar(andarDestino);
+                labelFloor.setText("Floor: " + andarDestino);
+                labelElevator1.setText("Elevator 1: Floor " + andarDestino);
+            } else {
+                elevator2.irParaAndar(andarDestino);
+                labelFloor.setText("Floor: " + andarDestino);
+                labelElevator2.setText("Elevator 2: Floor " + andarDestino);
+            }
+    
+            // Perguntar para qual andar o usuário deseja ir
+            String[] opcoesAndares = new String[]{"Subsoil 1", "Subsoil 2", "Ground floor", "Floor 1", "Floor 2", "Floor 3",
+                    "Floor 4", "Floor 5", "Floor 6"};
             String andarEscolhido = (String) JOptionPane.showInputDialog(null,
-                    "Escolha para Qual andar desejar ir:",
-                    "Andares",
+                    "Escolha para qual andar deseja ir:",
+                    "Floors",
                     JOptionPane.QUESTION_MESSAGE,
                     null,
                     opcoesAndares,
-                    opcoesAndares[0]);
-
+                    opcoesAndares[2]);
+    
+            // Moving the elevator to the floor chosen
             if (andarEscolhido != null) {
-                int elevadorMaisProximo = calculateElevator(andarDestino);
+                int novoAndar = getIndexFromFloor(andarEscolhido);
                 if (elevadorMaisProximo == 1) {
-                    elevator1.irParaAndar(andarDestino);
-                    labelFloor.setText("Andar: " + andarDestino);
-                    labelElevator1.setText("Elevador 1: Andar " + andarDestino);
+                    elevator1.irParaAndar(novoAndar);
+                    labelFloor.setText("Floor: " + novoAndar);
+                    labelElevator1.setText("Elevator 1: Floor " + novoAndar);
                 } else {
-                    elevator2.irParaAndar(andarDestino);
-                    labelFloor.setText("Andar: " + andarDestino);
-                    labelElevator2.setText("Elevador 2: Andar " + andarDestino);
+                    elevator2.irParaAndar(novoAndar);
+                    labelFloor.setText("Floor: " + novoAndar);
+                    labelElevator2.setText("Elevator 2: Floor " + novoAndar);
                 }
             }
         }
+    
+        // Método auxiliar para obter o índice do andar a partir do nome
+        private int getIndexFromFloor(String floorName) {
+            String[] opcoesAndares = new String[]{"Subsoil 1", "Subsoil 2", "Ground floor", "Floor 1", "Floor 2", "Floor 3",
+                    "Floor 4", "Floor 5", "Floor 6"};
+            for (int i = 0; i < opcoesAndares.length; i++) {
+                if (opcoesAndares[i].equals(floorName)) {
+                    return i - 2;
+                }
+            }
+            return -1;
+        }
     }
 
-
+    // Calculating the distance to elevators
     private int calculateElevator(int andarDestino) {
         int distanciaElevador1 = Math.abs(elevator1.getAndarAtual() - andarDestino);
         int distanciaElevador2 = Math.abs(elevator2.getAndarAtual() - andarDestino);
 
         if (distanciaElevador1 < distanciaElevador2) {
-            return 1; 
+            return 1;
         } else {
             return 2;
         }
     }
-    
 
-    public static void main(String[] args) {
-            ElevatorGrid elevador = new ElevatorGrid();
-            elevador.setVisible(true);
-    }
 }
-
