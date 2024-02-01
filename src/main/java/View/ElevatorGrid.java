@@ -28,23 +28,25 @@ public class ElevatorGrid extends JFrame {
 
         // Set BorderLayout
         setLayout(new BorderLayout());
+        this.setBackground(new Color(70, 130, 180));
         // Creating Panel for status of elevators and using 'GridLayout'
         JPanel elevatorsPanel = new JPanel();
         elevatorsPanel.setLayout(new GridLayout(2, 1));
         // Creating Panel for Buttons
-        JPanel buttonsPanel = new JPanel();
+        JPanel buttonsPanel = new JPanel(new GridLayout(3,3));
 
         // Defining the labels
-        labelFloor = new JLabel("Andar Atual:");
+        labelFloor = new JLabel("Current Floor:");
         labelFloor.setFont(new Font("Calibri", Font.BOLD, 16));
-        labelElevator1 = new JLabel("Elevador 1:");
+        labelElevator1 = new JLabel("Elevator 1:");
         labelElevator1.setFont(new Font("Calibri", Font.BOLD, 16));
-        labelElevator2 = new JLabel("Elevador 2:");
+        labelElevator2 = new JLabel("Elevator 2:");
         labelElevator2.setFont(new Font("Calibri", Font.BOLD, 16));
 
         // Adding 'elevator 1 and 2' to the 'elevatorsPanel'
         elevatorsPanel.add(labelElevator1);
         elevatorsPanel.add(labelElevator2);
+        elevatorsPanel.add(labelFloor);
 
         // Creating the buttons using forloop
         for (int i = -2; i <= 6; i++) {
@@ -60,8 +62,8 @@ public class ElevatorGrid extends JFrame {
         }
 
         // Adding and defining the main panel using 'BorderLayout'
-        add(labelFloor, BorderLayout.CENTER);
-        add(elevatorsPanel, BorderLayout.EAST);
+        // add(labelFloor, BorderLayout.CENTER);
+        add(elevatorsPanel, BorderLayout.CENTER);
         add(buttonsPanel, BorderLayout.SOUTH);
 
         // Set Frame
@@ -70,8 +72,7 @@ public class ElevatorGrid extends JFrame {
         setVisible(true);
         setBounds(500, 180, 500, 350);
     }
-
-    // Defining the floor =  
+ 
     private class BotaoAndarListener implements ActionListener {
         private int andarDestino;
     
@@ -85,11 +86,11 @@ public class ElevatorGrid extends JFrame {
             int elevadorMaisProximo = calculateElevator(andarDestino);
             if (elevadorMaisProximo == 1) {
                 elevator1.irParaAndar(andarDestino);
-                labelFloor.setText("Floor: " + andarDestino);
+                labelFloor.setText("Current Floor: " + andarDestino);
                 labelElevator1.setText("Elevator 1: Floor " + andarDestino);
             } else {
                 elevator2.irParaAndar(andarDestino);
-                labelFloor.setText("Floor: " + andarDestino);
+                labelFloor.setText("Current Floor: " + andarDestino);
                 labelElevator2.setText("Elevator 2: Floor " + andarDestino);
             }
     
@@ -97,7 +98,7 @@ public class ElevatorGrid extends JFrame {
             String[] opcoesAndares = new String[]{"Subsoil 1", "Subsoil 2", "Ground floor", "Floor 1", "Floor 2", "Floor 3",
                     "Floor 4", "Floor 5", "Floor 6"};
             String andarEscolhido = (String) JOptionPane.showInputDialog(null,
-                    "Escolha para qual andar deseja ir:",
+                    "Choose which floor you want to go to:",
                     "Floors",
                     JOptionPane.QUESTION_MESSAGE,
                     null,
@@ -109,11 +110,11 @@ public class ElevatorGrid extends JFrame {
                 int novoAndar = getIndexFromFloor(andarEscolhido);
                 if (elevadorMaisProximo == 1) {
                     elevator1.irParaAndar(novoAndar);
-                    labelFloor.setText("Floor: " + novoAndar);
+                    labelFloor.setText("Current Floor: " + novoAndar);
                     labelElevator1.setText("Elevator 1: Floor " + novoAndar);
                 } else {
                     elevator2.irParaAndar(novoAndar);
-                    labelFloor.setText("Floor: " + novoAndar);
+                    labelFloor.setText("Current Floor: " + novoAndar);
                     labelElevator2.setText("Elevator 2: Floor " + novoAndar);
                 }
             }
