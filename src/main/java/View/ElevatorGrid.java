@@ -59,7 +59,7 @@ public class ElevatorGrid extends JFrame {
         // Creating the buttons using forloop
         for (int i = -2; i <= 6; i++) {
             JButton btnAndar = new JButton(Integer.toString(i)); // Creating the buttons
-            btnAndar.addActionListener(new BotaoAndarListener(i)); // Adding Action to buttons
+            btnAndar.addActionListener(new buttonsListener(i)); // Adding Action to buttons
             buttonsPanel.add(btnAndar); // Adding the buttons on the 'buttonsPanel'
         // Set button properties for a better appearance
   
@@ -67,16 +67,6 @@ public class ElevatorGrid extends JFrame {
         btnAndar.setFont(new Font("Calibri", Font.BOLD, 16));
         btnAndar.setBackground(new Color(70, 130, 180));
         btnAndar.setForeground(Color.WHITE);
-
-        btnAndar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAndar.setBackground(new Color(51, 122, 183));
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAndar.setBackground(new Color(0, 102, 204));
-            }
-        });
         }
 
         // Adding and defining the main panel using 'BorderLayout'
@@ -93,27 +83,27 @@ public class ElevatorGrid extends JFrame {
  
     
     // Classe para lidar com os eventos dos buttons
-    private class BotaoAndarListener implements ActionListener {
-        private int andarDestino;
+    private class buttonsListener implements ActionListener {
+        private int destinationFloor;
     
-        public BotaoAndarListener(int andar) {
-            this.andarDestino = andar;
+        public buttonsListener(int andar) {
+            this.destinationFloor = andar;
         }
     
         @Override
         public void actionPerformed(ActionEvent e) {
             // Moving elevator to floor clicked
-            int nearestElevator = calculateElevator(andarDestino);
+            int nearestElevator = calculateElevator(destinationFloor);
             if (nearestElevator == 1) {
-                // elevator1.irParaAndar(andarDestino);
-                elevatorController.moveElevator(1, andarDestino);
-                labelFloor.setText("Current Floor: " + andarDestino);
-                labelElevator1.setText("Elevator 1: Floor " + andarDestino);
+                // elevator1.irParaAndar(destinationFloor);
+                elevatorController.moveElevator(1, destinationFloor);
+                labelFloor.setText("Current Floor: " + destinationFloor);
+                labelElevator1.setText("Elevator 1: Floor " + destinationFloor);
             } else {
-                // elevator2.irParaAndar(andarDestino);
-                elevatorController.moveElevator(2, andarDestino);
-                labelFloor.setText("Current Floor: " + andarDestino);
-                labelElevator2.setText("Elevator 2: Floor " + andarDestino);
+                // elevator2.irParaAndar(destinationFloor);
+                elevatorController.moveElevator(2, destinationFloor);
+                labelFloor.setText("Current Floor: " + destinationFloor);
+                labelElevator2.setText("Elevator 2: Floor " + destinationFloor);
             }
     
             // JOptionPane to ask the user the floor
