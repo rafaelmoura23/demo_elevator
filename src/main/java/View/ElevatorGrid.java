@@ -18,6 +18,17 @@ public class ElevatorGrid extends JFrame {
     private JLabel labelElevator1;
     private JLabel labelElevator2;
 
+    private ImageIcon elevatorUpIcon;
+    private ImageIcon elevatorDownIcon;
+
+    private JLabel labelElevator1Icon;
+    private JLabel labelElevator2Icon;
+
+    private int elevatorIconWidth = 50;
+    private int elevatorIconHeight = 50;
+
+
+
     private ElevatorController elevatorController;
 
     public ElevatorGrid() {
@@ -32,6 +43,13 @@ public class ElevatorGrid extends JFrame {
 
         elevatorController = new ElevatorController(elevator1, elevator2);
 
+        // Carregar as imagens
+        elevatorUpIcon = new ImageIcon(getClass().getResource("elevatorImg.png"));
+        elevatorDownIcon = new ImageIcon(getClass().getResource("elevatorImg.png"));
+
+        elevatorUpIcon.setImage(elevatorUpIcon.getImage().getScaledInstance(elevatorIconWidth, elevatorIconHeight, Image.SCALE_DEFAULT));
+        elevatorDownIcon.setImage(elevatorDownIcon.getImage().getScaledInstance(elevatorIconWidth, elevatorIconHeight, Image.SCALE_DEFAULT));
+
         // Set BorderLayout
         setLayout(new BorderLayout());
         this.setBackground(new Color(70, 130, 180));
@@ -42,14 +60,22 @@ public class ElevatorGrid extends JFrame {
         JPanel buttonsPanel = new JPanel(new GridLayout(3,3));
 
         // Defining the labels
-        labelFloor = new JLabel("Current Floor:");
-        labelFloor.setFont(new Font("Monospaced", Font.BOLD, 16));
+        labelFloor = new JLabel("Current Floor: Térreo");
+        labelFloor.setFont(new Font("Sanserif", Font.BOLD, 16));
 
         labelFloor.setBackground(Color.GRAY);
         labelElevator1 = new JLabel("Elevator 1: Térreo");
-        labelElevator1.setFont(new Font("Monospaced", Font.BOLD, 16));
+        labelElevator1.setFont(new Font("Sanserif", Font.BOLD, 16));
         labelElevator2 = new JLabel("Elevator 2: Térreo");
-        labelElevator2.setFont(new Font("Monospaced", Font.BOLD, 16));
+        labelElevator2.setFont(new Font("Sanserif", Font.BOLD, 16));
+
+        // Criar JLabels para exibir as imagens dos elevadores
+        labelElevator1Icon = new JLabel();
+        labelElevator2Icon = new JLabel();
+
+        // Adicionar as JLabels ao painel de elevadores
+        elevatorsPanel.add(labelElevator1Icon);
+        elevatorsPanel.add(labelElevator2Icon);
 
         // Adding 'elevator 1 and 2' to the 'elevatorsPanel'
         elevatorsPanel.add(labelElevator1);
@@ -65,8 +91,7 @@ public class ElevatorGrid extends JFrame {
   
         btnAndar.setFocusPainted(false);
         btnAndar.setFont(new Font("Calibri", Font.BOLD, 16));
-        btnAndar.setBackground(new Color(70, 130, 180));
-        btnAndar.setForeground(Color.WHITE);
+        btnAndar.setForeground(Color.BLACK);
         }
 
         // Adding and defining the main panel using 'BorderLayout'
@@ -99,12 +124,17 @@ public class ElevatorGrid extends JFrame {
                 elevatorController.moveElevator(1, destinationFloor);
                 labelFloor.setText("Current Floor: " + destinationFloor);
                 labelElevator1.setText("Elevator 1: Floor " + destinationFloor);
+                labelElevator1Icon.setIcon(elevatorUpIcon);
             } else {
                 // elevator2.irParaAndar(destinationFloor);
                 elevatorController.moveElevator(2, destinationFloor);
                 labelFloor.setText("Current Floor: " + destinationFloor);
                 labelElevator2.setText("Elevator 2: Floor " + destinationFloor);
+                labelElevator2Icon.setIcon(elevatorUpIcon);
             }
+
+            // labelElevator2Icon.setIcon(null); // Limpa a imagem
+            // labelElevator1Icon.setIcon(null); // Limpa a imagem
     
             // JOptionPane to ask the user the floor
             String[] floorsOptions = new String[]{"Subsoil 1", "Subsoil 2", "Ground floor", "Floor 1", "Floor 2", "Floor 3",
