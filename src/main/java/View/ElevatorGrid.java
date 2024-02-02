@@ -27,8 +27,6 @@ public class ElevatorGrid extends JFrame {
     private int elevatorIconWidth = 50;
     private int elevatorIconHeight = 50;
 
-
-
     private ElevatorController elevatorController;
 
     public ElevatorGrid() {
