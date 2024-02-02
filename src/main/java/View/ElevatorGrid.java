@@ -121,20 +121,20 @@ public class ElevatorGrid extends JFrame {
             int nearestElevator = calculateElevator(destinationFloor);
             if (nearestElevator == 1) {
                 // elevator1.irParaAndar(destinationFloor);
+                labelElevator1Icon.setIcon(null); // Limpa a imagem
                 elevatorController.moveElevator(1, destinationFloor);
                 labelFloor.setText("Current Floor: " + destinationFloor);
                 labelElevator1.setText("Elevator 1: Floor " + destinationFloor);
                 labelElevator1Icon.setIcon(elevatorUpIcon);
             } else {
                 // elevator2.irParaAndar(destinationFloor);
+                labelElevator2Icon.setIcon(null); // Limpa a imagem
                 elevatorController.moveElevator(2, destinationFloor);
                 labelFloor.setText("Current Floor: " + destinationFloor);
                 labelElevator2.setText("Elevator 2: Floor " + destinationFloor);
                 labelElevator2Icon.setIcon(elevatorUpIcon);
             }
 
-            // labelElevator2Icon.setIcon(null); // Limpa a imagem
-            // labelElevator1Icon.setIcon(null); // Limpa a imagem
     
             // JOptionPane to ask the user the floor
             String[] floorsOptions = new String[]{"Subsoil 1", "Subsoil 2", "Ground floor", "Floor 1", "Floor 2", "Floor 3",
@@ -151,13 +151,17 @@ public class ElevatorGrid extends JFrame {
             if (andarEscolhido != null) {
                 int newFloor = getIndex(andarEscolhido);
                 if (nearestElevator == 1) {
+                    labelElevator1Icon.setIcon(null); // Limpa a imagem
                     elevator1.irParaAndar(newFloor);
                     labelFloor.setText("Current Floor: " + newFloor);
                     labelElevator1.setText("Elevator 1: Floor " + newFloor);
+                    labelElevator1Icon.setIcon(elevatorUpIcon);
                 } else {
+                    labelElevator2Icon.setIcon(null); // Limpa a imagem
                     elevator2.irParaAndar(newFloor);
                     labelFloor.setText("Current Floor: " + newFloor);
                     labelElevator2.setText("Elevator 2: Floor " + newFloor);
+                    labelElevator2Icon.setIcon(elevatorUpIcon);
                 }
             }
         }
