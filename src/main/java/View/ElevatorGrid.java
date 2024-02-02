@@ -21,8 +21,8 @@ public class ElevatorGrid extends JFrame {
     private ImageIcon elevatorUpIcon;
     private ImageIcon elevatorDownIcon;
 
-    private JLabel labelElevator1Icon;
-    private JLabel labelElevator2Icon;
+    private JLabel labelElevator1Img;
+    private JLabel labelElevator2Img;
 
     private int elevatorIconWidth = 50;
     private int elevatorIconHeight = 50;
@@ -70,12 +70,12 @@ public class ElevatorGrid extends JFrame {
         labelElevator2.setFont(new Font("Sanserif", Font.BOLD, 16));
 
         // Criar JLabels para exibir as imagens dos elevadores
-        labelElevator1Icon = new JLabel();
-        labelElevator2Icon = new JLabel();
+        labelElevator1Img = new JLabel();
+        labelElevator2Img = new JLabel();
 
         // Adicionar as JLabels ao painel de elevadores
-        elevatorsPanel.add(labelElevator1Icon);
-        elevatorsPanel.add(labelElevator2Icon);
+        elevatorsPanel.add(labelElevator1Img);
+        elevatorsPanel.add(labelElevator2Img);
 
         // Adding 'elevator 1 and 2' to the 'elevatorsPanel'
         elevatorsPanel.add(labelElevator1);
@@ -121,18 +121,18 @@ public class ElevatorGrid extends JFrame {
             int nearestElevator = calculateElevator(destinationFloor);
             if (nearestElevator == 1) {
                 // elevator1.irParaAndar(destinationFloor);
-                labelElevator1Icon.setIcon(null); // Limpa a imagem
+                labelElevator1Img.setIcon(null); // Limpa a imagem
                 elevatorController.moveElevator(1, destinationFloor);
                 labelFloor.setText("Current Floor: " + destinationFloor);
                 labelElevator1.setText("Elevator 1: Floor " + destinationFloor);
-                labelElevator1Icon.setIcon(elevatorUpIcon);
+                labelElevator1Img.setIcon(elevatorUpIcon);
             } else {
                 // elevator2.irParaAndar(destinationFloor);
-                labelElevator2Icon.setIcon(null); // Limpa a imagem
+                labelElevator2Img.setIcon(null); // Limpa a imagem
                 elevatorController.moveElevator(2, destinationFloor);
                 labelFloor.setText("Current Floor: " + destinationFloor);
                 labelElevator2.setText("Elevator 2: Floor " + destinationFloor);
-                labelElevator2Icon.setIcon(elevatorUpIcon);
+                labelElevator2Img.setIcon(elevatorUpIcon);
             }
 
     
@@ -151,17 +151,17 @@ public class ElevatorGrid extends JFrame {
             if (andarEscolhido != null) {
                 int newFloor = getIndex(andarEscolhido);
                 if (nearestElevator == 1) {
-                    labelElevator1Icon.setIcon(null); // Limpa a imagem
+                    labelElevator1Img.setIcon(null); // Limpa a imagem
                     elevator1.irParaAndar(newFloor);
                     labelFloor.setText("Current Floor: " + newFloor);
                     labelElevator1.setText("Elevator 1: Floor " + newFloor);
-                    labelElevator1Icon.setIcon(elevatorUpIcon);
+                    labelElevator1Img.setIcon(elevatorUpIcon);
                 } else {
-                    labelElevator2Icon.setIcon(null); // Limpa a imagem
+                    labelElevator2Img.setIcon(null); // Limpa a imagem
                     elevator2.irParaAndar(newFloor);
                     labelFloor.setText("Current Floor: " + newFloor);
                     labelElevator2.setText("Elevator 2: Floor " + newFloor);
-                    labelElevator2Icon.setIcon(elevatorUpIcon);
+                    labelElevator2Img.setIcon(elevatorUpIcon);
                 }
             }
         }
